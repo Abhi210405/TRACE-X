@@ -1,3 +1,5 @@
+Try AI directly in your favourite apps … Use Gemini to generate drafts and refine content, plus get Gemini Pro with access to Google's next-gen AI for ₹1,950 ₹975 for 2 months
+100%
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,82 +22,308 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;bor
 .alerts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.alert{padding:18px}.head{display:flex;justify-content:space-between}.badge{padding:5px 8px;border-radius:5px;font-size:10px;font-weight:800}.high{color:#ff8c97}.badge.high{background:#481e28}.medium{background:#493b1d;color:#ffca70}.low{background:#163c34;color:#70e1c0}.alert p{color:#8ca1ab;line-height:1.45}.alert small{color:#5fd8b8;display:block;margin:12px 0}
 .invest{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}.score{font-size:58px;font-weight:900;color:#ff707c}.timeline{border-left:2px solid #31515e;padding:8px 12px;margin:7px 0}.timeline span{display:block;color:#718a96;font-size:10px}textarea{width:100%;height:300px;background:#07131b;color:#eaf2f6;border:1px solid #284754;border-radius:8px;padding:13px}.buttons{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
 .login{min-height:100vh;display:grid;place-items:center}.loginbox{width:390px;background:#0b1922;border:1px solid #1c3b48;padding:32px;border-radius:14px;text-align:center}.loginbox input{width:100%;padding:12px;margin:6px 0;background:#07131b;border:1px solid #294754;border-radius:7px;color:#fff}.loginbox button{width:100%;margin:6px 0}
+.factor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.factor{background:#091720;border:1px solid #244653;border-radius:9px;padding:13px}
+.factor label{display:flex;justify-content:space-between;color:#9bb0ba;font-size:11px;margin-bottom:8px}
+.factor input[type=range]{width:100%;accent-color:#24d2a7}
+.factor input[type=number]{width:75px;background:#07131b;color:#fff;border:1px solid #294754;border-radius:6px;padding:5px}
+.factor-value{color:#52dfba;font-weight:800}
+.analysis-box{margin-top:15px;border:1px solid #1c3b48;background:#0b1b24;border-radius:12px;padding:18px}
+.analysis-box h3{margin:0 0 5px}
+.pill{display:inline-block;padding:5px 8px;border-radius:5px;background:#102f3a;color:#66dfc1;font-size:10px;margin:3px}
+@media(max-width:900px){.factor-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.factor-grid{grid-template-columns:1fr}}
 .hidden{display:none}.toast{position:fixed;right:25px;bottom:25px;background:#14302d;border:1px solid #2a6759;padding:12px 15px;border-radius:8px;color:#74e2c3;z-index:10}
 @media(max-width:900px){aside{width:185px}main{margin-left:185px;width:calc(100% - 185px);padding:0 15px}.cards{grid-template-columns:1fr 1fr}.alerts{grid-template-columns:1fr 1fr}.grid,.invest{grid-template-columns:1fr}.hero{display:block}.flow{margin-top:18px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
+
 <script>
 const demoTx=[
-["TX001","10:00","ACC-A","ACC-B",95000],["TX002","10:08","ACC-B","ACC-C",92000],
-["TX003","10:16","ACC-C","ACC-D",90500],["TX004","10:24","ACC-D","ACC-E",89000],
-["TX005","10:32","ACC-E","ACC-A",87500],["TX006","11:00","ACC-X","ACC-Y",50000],
-["TX007","11:06","ACC-Y","ACC-Z",49200],["TX008","11:12","ACC-Z","ACC-P",48800],
-["TX009","11:18","ACC-P","ACC-Q",48000],["TX010","12:00","ACC-M1","ACC-HUB",12000],
-["TX011","12:02","ACC-M2","ACC-HUB",14000],["TX012","12:04","ACC-M3","ACC-HUB",15000],
-["TX013","12:06","ACC-M4","ACC-HUB",11000],["TX014","12:08","ACC-M5","ACC-HUB",13000],
-["TX015","12:30","ACC-HUB2","ACC-N1",9000],["TX016","12:32","ACC-HUB2","ACC-N2",8000],
-["TX017","12:34","ACC-HUB2","ACC-N3",7000],["TX018","12:36","ACC-HUB2","ACC-N4",6000],
-["TX019","12:38","ACC-HUB2","ACC-N5",5000],["TX020","14:00","ACC-NORMAL1","ACC-NORMAL2",2400],
-["TX021","15:00","ACC-NORMAL2","ACC-NORMAL3",1800],["TX022","16:00","ACC-NORMAL3","ACC-NORMAL4",3200]
+["TX001","10:00","ACC-A","ACC-B",95000,"INR"],["TX002","10:08","ACC-B","ACC-C",92000,"INR"],
+["TX003","10:16","ACC-C","ACC-D",90500,"INR"],["TX004","10:24","ACC-D","ACC-E",89000,"INR"],
+["TX005","10:32","ACC-E","ACC-A",87500,"INR"],["TX006","11:00","ACC-X","ACC-Y",50000,"INR"],
+["TX007","11:06","ACC-Y","ACC-Z",49200,"INR"],["TX008","11:12","ACC-Z","ACC-P",48800,"INR"],
+["TX009","11:18","ACC-P","ACC-Q",48000,"INR"],["TX010","12:00","ACC-M1","ACC-HUB",12000,"INR"],
+["TX011","12:02","ACC-M2","ACC-HUB",14000,"INR"],["TX012","12:04","ACC-M3","ACC-HUB",15000,"INR"],
+["TX013","12:06","ACC-M4","ACC-HUB",11000,"INR"],["TX014","12:08","ACC-M5","ACC-HUB",13000,"INR"],
+["TX015","12:30","ACC-HUB2","ACC-N1",9000,"INR"],["TX016","12:32","ACC-HUB2","ACC-N2",8000,"INR"],
+["TX017","12:34","ACC-HUB2","ACC-N3",7000,"INR"],["TX018","12:36","ACC-HUB2","ACC-N4",6000,"INR"],
+["TX019","12:38","ACC-HUB2","ACC-N5",5000,"INR"],["TX020","14:00","ACC-NORMAL1","ACC-NORMAL2",2400,"INR"],
+["TX021","15:00","ACC-NORMAL2","ACC-NORMAL3",1800,"INR"],["TX022","16:00","ACC-NORMAL3","ACC-NORMAL4",3200,"INR"]
 ];
+
 let tx=[],alerts=[],page="Dashboard",logged=false,toastTimer;
-function notify(s){let x=document.querySelector(".toast");if(!x){x=document.createElement("div");x.className="toast";document.body.appendChild(x)}x.textContent=s;clearTimeout(toastTimer);toastTimer=setTimeout(()=>x.remove(),2200)}
-function analyze(){
- if(!tx.length) return;
- alerts=[];
- const add=(pattern,accounts,score,explanation)=>alerts.push({id:"ALERT-"+String(alerts.length+1).padStart(3,"0"),pattern,accounts,score,level:score>=70?"HIGH":score>=40?"MEDIUM":"LOW",explanation});
- add("Circular Flow",["ACC-A","ACC-B","ACC-C","ACC-D","ACC-E"],91,"Five connected accounts form a closed transaction cycle. Repeated movement, similar amounts and short time intervals increase the network risk.");
- add("Layering",["ACC-X","ACC-Y","ACC-Z","ACC-P","ACC-Q"],78,"Funds move through multiple intermediary accounts in a rapid sequential chain.");
- add("Fan-In",["ACC-M1","ACC-M2","ACC-M3","ACC-M4","ACC-M5","ACC-HUB"],55,"Multiple accounts send funds into a common hub account.");
- add("Fan-Out",["ACC-HUB2","ACC-N1","ACC-N2","ACC-N3","ACC-N4","ACC-N5"],55,"One hub account distributes funds across multiple connected accounts.");
- add("Rapid Transfer",["ACC-A","ACC-B","ACC-C","ACC-D","ACC-E"],76,"Connected transfers occur within short intervals, indicating high transaction velocity.");
+let factors=JSON.parse(localStorage.getItem("traceXFactors")||'{"velocity":25,"amount":25,"network":25,"fan":15,"rounding":10}');
+let currentAlert=null;
+let csvHeaders=[];
+let dataSource="Demo Data";
+
+function notify(s){
+ let x=document.querySelector(".toast");
+ if(!x){x=document.createElement("div");x.className="toast";document.body.appendChild(x)}
+ x.textContent=s;clearTimeout(toastTimer);toastTimer=setTimeout(()=>x.remove(),2200);
 }
-function loadDemo(){tx=[...demoTx];analyze();render();notify("Demo scenario loaded and analyzed");}
+function minutes(t){
+ const p=String(t).split(":"); return (+p[0]||0)*60+(+p[1]||0);
+}
+function esc(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('\"',"&quot;").replaceAll("'","&#039;")}
+function num(v){const n=Number(String(v??"").replace(/[₹$€£,\s]/g,""));return Number.isFinite(n)?n:0}
+function normalizeHeader(v){return String(v??"").trim().toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_|_$/g,"")}
+function headerIndex(headers,aliases){const normalized=headers.map(normalizeHeader); for(const a of aliases){const i=normalized.indexOf(a);if(i>=0)return i} return -1}
+function normalizeRow(r,i,m){
+ const id=r[m.id]>=0?r[m.id]:-1, ts=r[m.ts]>=0?r[m.ts]:-1, s=r[m.sender]>=0?r[m.sender]:-1, rec=r[m.receiver]>=0?r[m.receiver]:-1, am=r[m.amount]>=0?r[m.amount]:-1, cu=r[m.currency]>=0?r[m.currency]:-1;
+ return [id>=0&&r[id]?r[id]:"TX"+String(i+1).padStart(3,"0"),ts>=0&&r[ts]?r[ts]:"00:00",s>=0&&r[s]?r[s]:"",rec>=0&&r[rec]?r[rec]:"",am>=0?num(r[am]):0,cu>=0&&r[cu]?r[cu]:"INR",r];
+}
+function detectMapping(headers){
+ return {
+  id:headerIndex(headers,["transaction_id","transactionid","tx_id","txid","id","reference","ref"]),
+  ts:headerIndex(headers,["timestamp","time","datetime","date_time","date"]),
+  sender:headerIndex(headers,["sender","from","source","source_account","sender_account","payer","origin"]),
+  receiver:headerIndex(headers,["receiver","to","destination","destination_account","receiver_account","payee","beneficiary"]),
+  amount:headerIndex(headers,["amount","transaction_amount","value","amt","amount_inr","amount_usd"]),
+  currency:headerIndex(headers,["currency","ccy","curr","currency_code"])
+ };
+}
+function detectCycle(){
+ const out=[];
+ const map=new Map(tx.map(t=>[t[2],t]));
+ for(const first of tx){
+   let cur=first[2], path=[], seen=new Set();
+   for(let step=0;step<8;step++){
+     if(seen.has(cur)) break;
+     seen.add(cur); path.push(cur);
+     const e=map.get(cur); if(!e) break;
+     cur=e[3];
+     if(cur===first[2] && path.length>=3){
+       const uniq=[...new Set(path)];
+       if(uniq.length>=3 && !out.some(x=>x.accounts.join("|")===uniq.join("|")))
+         out.push({accounts:uniq, count:uniq.length});
+       break;
+     }
+   }
+ }
+ return out;
+}
+function detectChains(){
+ const result=[];
+ const sorted=[...tx].sort((a,b)=>minutes(a[1])-minutes(b[1]));
+ for(let i=0;i<sorted.length-2;i++){
+   let path=[sorted[i][2],sorted[i][3]], ids=[sorted[i][0]];
+   for(let j=i+1;j<sorted.length && path.length<7;j++){
+     if(minutes(sorted[j][1])-minutes(sorted[j-1][1])<=30 && sorted[j][2]===path[path.length-1]){
+       path.push(sorted[j][3]);ids.push(sorted[j][0]);
+     }
+   }
+   if(path.length>=4) result.push({accounts:[...new Set(path)],ids});
+ }
+ return result;
+}
+function analyze(){
+ alerts=[];
+ if(!tx.length){render();return}
+ const add=(pattern,accounts,score,explanation,evidence=[])=>{
+   score=Math.max(0,Math.min(100,Math.round(score)));
+   alerts.push({id:"ALERT-"+String(alerts.length+1).padStart(3,"0"),pattern,accounts,score,
+     level:score>=70?"HIGH":score>=40?"MEDIUM":"LOW",explanation,evidence});
+ };
+
+ const cycles=detectCycle();
+ cycles.slice(0,3).forEach(c=>{
+   const vals=tx.filter(t=>c.accounts.includes(t[2])&&c.accounts.includes(t[3])).map(t=>t[4]);
+   const avg=vals.reduce((a,b)=>a+b,0)/(vals.length||1);
+   const score=factors.network*.55+factors.amount*.25+factors.velocity*.20;
+   add("Circular Flow",c.accounts,score,
+     `${c.count} connected accounts form a closed transaction cycle. Network weight ${factors.network}% and amount similarity weight ${factors.amount}% contributed to the risk score.`,
+     tx.filter(t=>c.accounts.includes(t[2])||c.accounts.includes(t[3])).slice(0,10).map(t=>t[0]));
+ });
+
+ const chains=detectChains();
+ if(chains[0]){
+   const c=chains[0];
+   const score=factors.velocity*.65+factors.network*.25+factors.amount*.10+10;
+   add("Layering / Rapid Chain",c.accounts,score,
+     `A sequential chain of ${c.accounts.length} connected entities was detected within short time intervals. Velocity weight ${factors.velocity}% is applied.`,
+     c.ids);
+ }
+
+ const countsIn={},countsOut={};
+ tx.forEach(t=>{countsIn[t[3]]=(countsIn[t[3]]||0)+1;countsOut[t[2]]=(countsOut[t[2]]||0)+1});
+ Object.entries(countsIn).filter(([_,n])=>n>=3).slice(0,3).forEach(([hub,n])=>{
+   const acc=[hub,...tx.filter(t=>t[3]===hub).map(t=>t[2])];
+   const score=factors.fan*2.4+factors.network*.35;
+   add("Fan-In",acc,score,`${n} source accounts send funds into the common hub ${hub}. Fan-in weight ${factors.fan}% is included.`,tx.filter(t=>t[3]===hub).map(t=>t[0]));
+ });
+ Object.entries(countsOut).filter(([_,n])=>n>=3).slice(0,3).forEach(([hub,n])=>{
+   const acc=[hub,...tx.filter(t=>t[2]===hub).map(t=>t[3])];
+   const score=factors.fan*2.4+factors.network*.35;
+   add("Fan-Out",acc,score,`${hub} distributes funds to ${n} connected accounts. Fan-out weight ${factors.fan}% is included.`,tx.filter(t=>t[2]===hub).map(t=>t[0]));
+ });
+
+ const amounts=tx.map(t=>t[4]).filter(Boolean);
+ const highAmount=amounts.length?Math.max(...amounts):0;
+ const threshold=Number(document.getElementById("amountThreshold")?.value||Math.max(50000,highAmount*.8));
+ const highTx=tx.filter(t=>t[4]>=threshold);
+ if(highTx.length){
+   const score=Math.min(100,30+factors.amount*1.5+factors.rounding*.5);
+   add("High-Value Input", [...new Set(highTx.flatMap(t=>[t[2],t[3]]))],score,
+     `${highTx.length} transaction(s) meet or exceed the configured amount threshold of ₹${threshold.toLocaleString()}. This is an input analysis factor, not a legal conclusion.`,
+     highTx.map(t=>t[0]));
+ }
+
+ const suspicious=tx.filter(t=>{
+   const a=String(t[4]); return a.endsWith("000")||a.endsWith("500")||a.endsWith("00");
+ });
+ if(suspicious.length>=3){
+   const score=Math.min(100,20+factors.rounding*1.8+factors.amount*.3);
+   add("Amount Pattern", [...new Set(suspicious.flatMap(t=>[t[2],t[3]]))],score,
+     `${suspicious.length} transactions contain simple rounded amount patterns. Rounding weight ${factors.rounding}% is applied.`,
+     suspicious.slice(0,10).map(t=>t[0]));
+ }
+ alerts.sort((a,b)=>b.score-a.score);
+ alerts.forEach((a,i)=>a.id="ALERT-"+String(i+1).padStart(3,"0"));
+}
+function saveFactors(){
+ ["velocity","amount","network","fan","rounding"].forEach(k=>{
+   const el=document.getElementById(k); if(el) factors[k]=Number(el.value);
+ });
+ localStorage.setItem("traceXFactors",JSON.stringify(factors));
+ analyze();render();notify("Analysis factors saved and applied");
+}
+function resetFactors(){
+ factors={velocity:25,amount:25,network:25,fan:15,rounding:10};
+ localStorage.setItem("traceXFactors",JSON.stringify(factors));analyze();render();notify("Factors reset to default");
+}
+function loadDemo(){
+  const m={id:0,ts:1,sender:2,receiver:3,amount:4,currency:5};
+  tx=demoTx.map((x,i)=>normalizeRow(x,i,m));
+  csvHeaders=["transaction_id","timestamp","sender","receiver","amount","currency"];
+  dataSource="Demo Data";
+  currentAlert=null;
+  analyze();render();notify("Demo scenario loaded and analyzed");
+}
+function card(a,b,c){return `<div class="card"><span>${esc(a)}</span><strong>${esc(b)}</strong><small>${esc(c)}</small></div>`}
+function row(a){return `<div class="row" onclick="investigate('${esc(a.id)}')"><i class="dot"></i><div><b>${esc(a.id)} · ${esc(a.pattern)}</b><small>${esc(a.explanation.substring(0,92))}…</small></div><b>${a.score}</b></div>`}
+function factorPanel(){
+ return `<div class="analysis-box"><div class="title"><div><h3>Input Analysis Factors</h3><p class="muted">Tune how the prototype scores transaction risk. Changes are applied to the current data.</p></div><div class="buttons"><button class="secondary" onclick="resetFactors()">Reset</button><button class="primary" onclick="saveFactors()">Apply Analysis</button></div></div>
+ <div class="factor-grid">
+ ${factor("velocity","Transaction Velocity",factors.velocity)}
+ ${factor("amount","Amount Significance",factors.amount)}
+ ${factor("network","Network Connectivity",factors.network)}
+ ${factor("fan","Fan-In / Fan-Out",factors.fan)}
+ ${factor("rounding","Amount Pattern",factors.rounding)}
+ <div class="factor"><label>High-Value Threshold <span class="factor-value">₹<input id="amountThreshold" type="number" min="0" value="${Math.max(50000,Math.round((tx.map(t=>t[4]).filter(Boolean).sort((a,b)=>b-a)[0]||50000)*.8))}"></span></label><small class="muted">Transactions at or above this amount create an input-based alert.</small></div>
+ </div></div>`;
+}
+function factor(id,label,val){return `<div class="factor"><label>${label}<span class="factor-value" id="${id}Val">${val}%</span></label><input id="${id}" type="range" min="0" max="100" value="${val}" oninput="document.getElementById('${id}Val').textContent=this.value+'%'"></div>`}
+
 function layout(){
-return `<div class="app"><aside><div class="logo"><span>◈</span> TRACE-X</div><div class="tag">FINANCIAL CRIME INTELLIGENCE</div>
-<nav>${["Dashboard","Transactions","Network","Alerts","Investigations"].map(n=>`<button class="${page===n?"active":""}" onclick="go('${n}')">${n}</button>`).join("")}</nav>
-<div class="demo">● DEMO MODE<br><small>Synthetic Data Only</small></div></aside>
-<main><header><b>${page}</b><span style="color:#667f8b"> / Investigation Intelligence</span><button class="run" onclick="loadDemo()">▶ Run Demo Investigation</button></header>${content()}</main></div>`}
+ return `<div class="app"><aside><div class="logo"><span>◈</span> TRACE-X</div><div class="tag">FINANCIAL CRIME INTELLIGENCE</div>
+ <nav>${["Dashboard","Transactions","Network","Alerts","Investigations"].map(n=>`<button class="${page===n?"active":""}" onclick="go('${n}')">${n}</button>`).join("")}</nav>
+ <div class="demo">● DEMO MODE<br><small>Synthetic Data Only</small></div></aside>
+ <main><header><b>${page}</b><span style="color:#667f8b"> / Investigation Intelligence</span><button class="run" onclick="loadDemo()">▶ Run Demo Investigation</button></header>${content()}</main></div>`;
+}
 function content(){
-if(page==="Dashboard")return dashboard();
-if(page==="Transactions")return transactions();
-if(page==="Network")return network();
-if(page==="Alerts")return alertPage();
-return investigations();
+ if(page==="Dashboard")return dashboard();
+ if(page==="Transactions")return transactions();
+ if(page==="Network")return network();
+ if(page==="Alerts")return alertPage();
+ return investigations();
 }
 function dashboard(){
-let high=alerts.filter(a=>a.level==="HIGH").length;
-return `<section class="page"><div class="hero"><div><label>INVESTIGATION CONTROL CENTER</label><h1>See the network behind the money.</h1><p>TRACE-X transforms transaction records into connected financial intelligence and explainable evidence.</p></div><div class="flow">DATA → GRAPH → PATTERN → RISK → EVIDENCE → CASE</div></div>
-<div class="cards">${card("Transactions",tx.length,"Records analyzed")}${card("Accounts",new Set(tx.flatMap(t=>[t[2],t[3]])).size,"Connected entities")}${card("Suspicious Networks",alerts.length,"Detected patterns")}${card("High Risk Cases",high,"Priority review")}</div>
-<div class="grid"><div class="panel"><h3>Risk Overview</h3><div style="padding:25px;font-size:18px;line-height:2.2">🔴 HIGH &nbsp; ${alerts.filter(a=>a.level==="HIGH").length}<br>🟠 MEDIUM &nbsp; ${alerts.filter(a=>a.level==="MEDIUM").length}<br>🟢 LOW &nbsp; ${alerts.filter(a=>a.level==="LOW").length}</div></div>
-<div class="panel"><h3>Priority Alerts</h3>${alerts.slice(0,5).map(a=>row(a)).join("")}</div></div></section>`}
-function card(a,b,c){return `<div class="card"><span>${a}</span><strong>${b}</strong><small>${c}</small></div>`}
-function row(a){return `<div class="row" onclick="investigate('${a.id}')"><i class="dot"></i><div><b>${a.id} · ${a.pattern}</b><small>${a.explanation.substring(0,72)}…</small></div><b>${a.score}</b></div>`}
+ let high=alerts.filter(a=>a.level==="HIGH").length;
+ return `<section class="page"><div class="hero"><div><label>INVESTIGATION CONTROL CENTER</label><h1>See the network behind the money.</h1><p>TRACE-X transforms the records you upload or provide into connected financial intelligence and explainable evidence.</p></div><div class="flow">DATA → INPUT FACTORS → GRAPH → PATTERN → RISK → EVIDENCE</div></div>
+ ${factorPanel()}
+ <div class="cards">${card("Transactions",tx.length,"Records analyzed")}${card("Accounts",new Set(tx.flatMap(t=>[t[2],t[3]])).size,"Connected entities")}${card("Suspicious Networks",alerts.length,"Detected patterns")}${card("High Risk Cases",high,"Priority review")}</div>
+ <div class="grid"><div class="panel"><h3>Risk Overview</h3><div style="padding:25px;font-size:18px;line-height:2.2">🔴 HIGH &nbsp; ${alerts.filter(a=>a.level==="HIGH").length}<br>🟠 MEDIUM &nbsp; ${alerts.filter(a=>a.level==="MEDIUM").length}<br>🟢 LOW &nbsp; ${alerts.filter(a=>a.level==="LOW").length}</div></div>
+ <div class="panel"><h3>Priority Alerts</h3>${alerts.slice(0,5).map(a=>row(a)).join("")||'<p class="muted">Load demo data or import a CSV to start analysis.</p>'}</div></div></section>`;
+}
 function transactions(){
-return `<section class="page"><div class="title"><div><h2>Transaction Ingestion</h2><p class="muted">Synthetic transaction records for analysis.</p></div><button class="primary" onclick="loadDemo()">Load Demo Data</button></div>
-<div class="upload"><b>CSV Upload</b><br><input type="file" accept=".csv" onchange="csvUpload(event)"><div class="muted">Required: transaction_id,timestamp,sender,receiver,amount,currency</div></div>
-<div class="panel" style="margin-top:15px;overflow:auto"><table><thead><tr><th>ID</th><th>TIME</th><th>SENDER</th><th>RECEIVER</th><th>AMOUNT</th></tr></thead><tbody>${tx.map(t=>`<tr><td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>₹${Number(t[4]).toLocaleString()}</td></tr>`).join("")}</tbody></table></div></section>`}
-function csvUpload(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{let lines=String(r.result).trim().split(/\\r?\\n/).slice(1);tx=lines.map(x=>x.split(",")).filter(x=>x.length>=5);analyze();render();notify("CSV imported and analyzed")};r.readAsText(f)}
+ const extra=csvHeaders.length?csvHeaders:["transaction_id","timestamp","sender","receiver","amount","currency"];
+ return `<section class="page"><div class="title"><div><h2>Transaction Ingestion</h2><p class="muted">Source: ${esc(dataSource)} · ${tx.length} records loaded</p></div><div class="buttons"><button class="primary" onclick="loadDemo()">Load Demo Data</button><button class="secondary" onclick="exportCSV()">Export Alerts</button><button class="secondary" onclick="exportTransactions()">Export Transactions</button></div></div>
+ <div class="upload"><b>CSV Upload</b><br><input type="file" accept=".csv,text/csv" onchange="csvUpload(event)"><div class="muted">Supports standard names and common aliases for transaction ID, time, sender, receiver, amount and currency.</div><div class="success">${tx.length?`✓ ${tx.length} records received from ${esc(dataSource)}`:'No transaction data loaded yet.'}</div></div>
+ ${factorPanel()}
+ <div class="panel" style="margin-top:15px;overflow:auto"><table><thead><tr>${extra.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${tx.map(t=>`<tr>${(t[6]?t[6]:t.slice(0,extra.length)).map(v=>`<td>${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>`;
+}
+
+function csvUpload(e){
+ const f=e.target.files[0]; if(!f)return;
+ const r=new FileReader();
+ r.onload=()=>{
+  const text=String(r.result||"").replace(/^\uFEFF/,"").trim();
+  if(!text){notify("CSV is empty");return}
+  const headerLine=text.split(/\r?\n/)[0];
+   const comma=(headerLine.match(/,/g)||[]).length, semi=(headerLine.match(/;/g)||[]).length, tab=(headerLine.match(/\t/g)||[]).length;
+   const delim=tab>comma&&tab>semi?"\t":(semi>comma?";":",");
+  const lines=text.split(/\r?\n/).filter(x=>x.trim()!=="");
+  csvHeaders=parseCSVLine(lines[0],delim).map(x=>String(x).trim());
+  const map=detectMapping(csvHeaders);
+  if(map.sender<0||map.receiver<0||map.amount<0){notify("CSV needs sender, receiver and amount columns");return}
+  tx=lines.slice(1).map(line=>parseCSVLine(line,delim)).filter(row=>row.some(v=>String(v).trim()!=="")).map((row,i)=>normalizeRow(row,i,map));
+  dataSource=f.name;
+  currentAlert=null;
+  analyze();render();notify(`${tx.length} CSV records received and analyzed`);
+ };
+ r.readAsText(f);
+}
+
+function parseCSVLine(line,delimiter=","){
+ const out=[];let cur="",q=false;
+ for(let i=0;i<line.length;i++){const c=line[i];
+  if(c==='"' && line[i+1]==='"'){cur+='"';i++}
+  else if(c==='"')q=!q;
+  else if(c===delimiter&&!q){out.push(cur.trim());cur=""}
+  else cur+=c;
+ }
+ out.push(cur.trim());return out;
+}
 function network(){
-let accounts=[...new Set(tx.flatMap(t=>[t[2],t[3]]))];let pos={};accounts.forEach((a,i)=>pos[a]={x:45+(i%6)*15,y:70+Math.floor(i/6)*120});
-let risk=new Set(alerts.flatMap(a=>a.accounts));
-let edges=tx.slice(0,35).map(t=>{let a=pos[t[2]],b=pos[t[3]];if(!a||!b)return"";let dx=b.x-a.x,dy=b.y-a.y,len=Math.sqrt(dx*dx+dy*dy),ang=Math.atan2(dy,dx)*180/Math.PI;return `<div class="edge ${risk.has(t[2])||risk.has(t[3])?"risk":""}" style="left:${a.x}%;top:${a.y}px;width:${len}%;transform:rotate(${ang}deg)"></div>`}).join("");
-return `<section class="page"><div class="title"><div><h2>Transaction Network</h2><p class="muted">Relationships reveal what isolated transactions cannot.</p></div></div><div class="network">${edges}${accounts.map((a,i)=>`<div class="node ${risk.has(a)?"high":""}" style="left:${pos[a].x}%;top:${pos[a].y}px"><b>${a}</b><small>${risk.has(a)?"HIGH RISK":"CONNECTED"}</small></div>`).join("")}</div></section>`}
+ let accounts=[...new Set(tx.flatMap(t=>[t[2],t[3]]))],pos={};
+ accounts.forEach((a,i)=>pos[a]={x:5+(i%6)*17,y:45+Math.floor(i/6)*120});
+ let risk=new Set(alerts.flatMap(a=>a.accounts));
+ let edges=tx.slice(0,50).map(t=>{let a=pos[t[2]],b=pos[t[3]];if(!a||!b)return"";
+   let dx=b.x-a.x,dy=b.y-a.y,len=Math.sqrt(dx*dx+dy*dy),ang=Math.atan2(dy,dx)*180/Math.PI;
+   return `<div class="edge ${risk.has(t[2])||risk.has(t[3])?"risk":""}" style="left:${a.x}%;top:${a.y}px;width:${len}%;transform:rotate(${ang}deg)"></div>`;
+ }).join("");
+ return `<section class="page"><div class="title"><div><h2>Transaction Network</h2><p class="muted">Relationships reveal what isolated transactions cannot. Risk nodes reflect current analysis.</p></div></div><div class="network">${edges}${accounts.map(a=>`<div class="node ${risk.has(a)?"high":""}" style="left:${pos[a].x}%;top:${pos[a].y}px"><b>${a}</b><small>${risk.has(a)?"HIGH RISK":"CONNECTED"}</small></div>`).join("")}</div></section>`;
+}
 function alertPage(){
-return `<section class="page"><div class="title"><div><h2>Explainable Alerts</h2><p class="muted">Risk is prioritized with evidence, not just a score.</p></div></div><div class="alerts">${alerts.map(a=>`<div class="alert"><div class="head"><span class="badge ${a.level.toLowerCase()}">${a.level}</span><b>${a.score}/100</b></div><h3>${a.pattern}</h3><p>${a.explanation}</p><small>${a.accounts.join(" → ")}</small><button class="secondary" style="width:100%" onclick="investigate('${a.id}')">Investigate</button></div>`).join("")}</div></section>`}
+ return `<section class="page"><div class="title"><div><h2>Explainable Alerts</h2><p class="muted">Risk is prioritized with configurable input factors and evidence.</p></div><button class="primary" onclick="go('Dashboard')">Adjust Factors</button></div><div class="alerts">${alerts.map(a=>`<div class="alert"><div class="head"><span class="badge ${a.level.toLowerCase()}">${a.level}</span><b>${a.score}/100</b></div><h3>${a.pattern}</h3><p>${a.explanation}</p><small>${a.accounts.join(" → ")}</small><div>${a.evidence.slice(0,6).map(x=>`<span class="pill">${x}</span>`).join("")}</div><button class="secondary" style="width:100%;margin-top:10px" onclick="investigate('${a.id}')">Investigate</button></div>`).join("")||'<div class="panel"><p class="muted">No alerts yet.</p></div>'}</div></section>`;
+}
 function investigations(){
-let a=window.currentAlert;if(!a)return `<section class="page"><div class="panel" style="padding:70px;text-align:center"><h2>No investigation selected</h2><p class="muted">Open an alert and click Investigate.</p></div></section>`;
-return `<section class="page"><div class="title"><div><h2>Investigation CASE-${a.id.slice(-3)}</h2><p class="muted">Human review required · synthetic evidence</p></div><span class="badge high">${a.score}/100 HIGH</span></div>
-<div class="invest"><div class="panel"><h3>Explainable Evidence</h3><div class="score">${a.score}</div><h3>${a.pattern}</h3><p class="muted">${a.explanation}</p><h4>Accounts</h4><p style="color:#61d9b8">${a.accounts.join(" → ")}</p><h4>Evidence Timeline</h4>${tx.filter(t=>a.accounts.includes(t[2])||a.accounts.includes(t[3])).slice(0,10).map(t=>`<div class="timeline"><b>${t[0]}</b> · ${t[2]} → ${t[3]} · ₹${Number(t[4]).toLocaleString()}<span>${t[1]} · suspicious network evidence</span></div>`).join("")}</div>
-<div class="panel"><h3>Investigator Notes</h3><textarea id="notes" placeholder="Record investigation observations…"></textarea><div class="buttons"><button class="secondary" onclick="notify('Notes saved')">Save Notes</button><button class="primary" onclick="notify('Case marked Under Review')">Mark Under Review</button><button class="secondary" onclick="notify('Case escalated')">Escalate</button></div></div></div></section>`}
-function investigate(id){window.currentAlert=alerts.find(a=>a.id===id);go("Investigations")}
+ let a=currentAlert;
+ if(!a)return `<section class="page"><div class="panel" style="padding:70px;text-align:center"><h2>No investigation selected</h2><p class="muted">Open an alert and click Investigate.</p></div></section>`;
+ let saved=localStorage.getItem("notes_"+a.id)||"";
+ return `<section class="page"><div class="title"><div><h2>Investigation CASE-${a.id.slice(-3)}</h2><p class="muted">Human review required · prototype evidence only</p></div><span class="badge ${a.level.toLowerCase()}">${a.score}/100 ${a.level}</span></div>
+ <div class="invest"><div class="panel"><h3>Explainable Evidence</h3><div class="score">${a.score}</div><h3>${a.pattern}</h3><p class="muted">${a.explanation}</p><h4>Accounts</h4><p style="color:#61d9b8">${a.accounts.join(" → ")}</p><h4>Evidence Timeline</h4>${tx.filter(t=>a.accounts.includes(t[2])||a.accounts.includes(t[3])).slice(0,12).map(t=>`<div class="timeline"><b>${t[0]}</b> · ${t[2]} → ${t[3]} · ₹${Number(t[4]).toLocaleString()}<span>${t[1]} · ${t[5]||"INR"} · matched analysis evidence</span></div>`).join("")}</div>
+ <div class="panel"><h3>Investigator Notes</h3><textarea id="notes" placeholder="Record investigation observations…">${saved}</textarea><div class="buttons"><button class="secondary" onclick="saveNotes('${a.id}')">Save Notes</button><button class="primary" onclick="notify('Case marked Under Review')">Mark Under Review</button><button class="secondary" onclick="notify('Case escalated')">Escalate</button><button class="secondary" onclick="exportCase('${a.id}')">Export Case</button></div></div></div></section>`;
+}
+function saveNotes(id){localStorage.setItem("notes_"+id,document.getElementById("notes").value);notify("Notes saved locally");}
+function investigate(id){currentAlert=alerts.find(a=>a.id===id);go("Investigations")}
 function go(p){page=p;render()}
-function render(){document.getElementById("root").innerHTML=logged?layout():login()}
-function login(){return `<div class="login"><div class="loginbox"><div class="logo"><span>◈</span> TRACE-X</div><p class="muted">Transaction Risk Analysis & Circular Evidence Explorer</p><input id="email" value="investigator@trace-x.demo"><input id="pass" type="password" value="TraceX@123"><button class="primary" onclick="doLogin()">Sign in</button><button class="secondary" onclick="doLogin()">Demo Login</button><p style="font-size:11px;color:#657e8a">Demo credentials are pre-filled.</p></div></div>`}
+function exportTransactions(){
+ const headers=csvHeaders.length?csvHeaders:["transaction_id","timestamp","sender","receiver","amount","currency"];
+ const rows=tx.map(t=>t[6]&&t[6].length?t[6]:t.slice(0,headers.length));
+ const data=[headers,...rows].map(r=>r.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");
+ download("tracex_transactions.csv",data,"text/csv");notify("Transaction data exported");
+}
+function exportCase(id){
+ const a=alerts.find(x=>x.id===id);if(!a)return;
+ const data={case_id:id,pattern:a.pattern,score:a.score,level:a.level,accounts:a.accounts,evidence:a.evidence,explanation:a.explanation,factors,exported_at:new Date().toISOString()};
+ download("tracex_"+id+".json",JSON.stringify(data,null,2),"application/json");notify("Case exported");
+}
+function exportCSV(){
+ let rows=[["alert_id","pattern","score","level","accounts","explanation"],...alerts.map(a=>[a.id,a.pattern,a.score,a.level,a.accounts.join(" -> "),a.explanation])];
+ download("tracex_alerts.csv",rows.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(",")).join("\n"),"text/csv");notify("Alert report exported");
+}
+function download(name,data,type){const blob=new Blob([data],{type});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function login(){return `<div class="login"><div class="loginbox"><div class="logo"><span>◈</span> TRACE-X</div><p class="muted">Transaction Risk Analysis & Circular Evidence Explorer</p><input id="email" value="investigator@trace-x.demo"><input id="pass" type="password" value="TraceX@123"><button class="primary" onclick="doLogin()">Sign in</button><button class="secondary" onclick="doLogin()">Demo Login</button><p style="font-size:11px;color:#657e8a">Prototype demo credentials are pre-filled.</p></div></div>`}
 function doLogin(){logged=true;loadDemo()}
+function render(){document.getElementById("root").innerHTML=logged?layout():login()}
 render();
 </script>
+
 </body>
 </html>
