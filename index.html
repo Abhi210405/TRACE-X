@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TRACE-X — Financial Crime Intelligence</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#061018;color:#eaf2f6;font-family:Inter,Segoe UI,Arial,sans-serif}.app{display:flex;min-height:100vh}
+aside{width:235px;position:fixed;height:100vh;background:#091720;border-right:1px solid #1b3541;padding:25px 16px}.logo{font-size:24px;font-weight:900}.logo span{color:#40ddb6}.tag{font-size:9px;letter-spacing:1.5px;color:#6e8793;margin:6px 0 32px}
+nav button{width:100%;padding:12px;text-align:left;border:0;border-radius:8px;background:transparent;color:#8ba1ac;margin:3px 0;cursor:pointer}nav button:hover,nav button.active{background:#102a36;color:#fff}
+.demo{position:absolute;bottom:20px;border:1px solid #214451;border-radius:8px;padding:10px;width:200px;color:#52dfba;font-size:10px}.demo small{color:#708792}
+main{margin-left:235px;width:calc(100% - 235px);padding:0 30px 50px}header{height:72px;border-bottom:1px solid #17303b;display:flex;align-items:center;justify-content:space-between}.run{background:#24d2a7;color:#03120e;border:0;border-radius:8px;padding:11px 16px;font-weight:800;cursor:pointer}
+.page{padding-top:25px}.hero{border:1px solid #1c3b48;background:#0b1b24;border-radius:14px;padding:28px;display:flex;justify-content:space-between;align-items:end}.hero label{font-size:10px;letter-spacing:1.5px;color:#40ddb6}.hero h1{font-size:31px;margin:10px 0}.hero p{color:#8ca4af;max-width:650px}.flow{font-size:10px;color:#50d8b7;white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:15px 0}.card,.panel,.alert{background:#0b1821;border:1px solid #1a3440;border-radius:11px}.card{padding:18px}.card small,.card span{display:block;color:#728995;font-size:11px}.card strong{display:block;font-size:28px;margin:8px 0}
+.grid{display:grid;grid-template-columns:1fr 1.3fr;gap:14px}.panel{padding:18px}.panel h3{margin-top:0}.row{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid #18313b;cursor:pointer}.row small{display:block;color:#738a96;margin-top:4px}.row b:last-child{margin-left:auto}.dot{width:8px;height:8px;background:#ff6675;border-radius:50%}
+.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.title h2{margin-bottom:5px}.muted{color:#788f9b}.primary,.secondary{padding:10px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer}.primary{background:#24d2a7;color:#03120e}.secondary{background:#102630;color:#dce8ed;border:1px solid #264552}
+.upload{border:1px dashed #2c5664;padding:25px;border-radius:12px;text-align:center;background:#091720}.upload input{margin:12px}.success{padding:11px;background:#0a2a23;color:#63e0bd;border-radius:7px;margin:12px 0}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid #18313b;font-size:12px}th{color:#738995;font-size:10px}
+.network{height:590px;position:relative;overflow:hidden;background:#07131b;border:1px solid #193742;border-radius:12px}.node{position:absolute;width:110px;text-align:center;padding:10px;border-radius:9px;background:#102b37;border:1px solid #38606e;box-shadow:0 8px 25px #0005;z-index:2}.node.high{border-color:#ff6575;box-shadow:0 0 20px #ff657533}.node small{display:block;font-size:9px;color:#62dcbc;margin-top:3px}.edge{position:absolute;height:2px;background:#315967;transform-origin:left center;z-index:1}.edge.risk{background:#ff6675}.arrow{position:absolute;color:#79a0ac;font-size:14px}
+.alerts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.alert{padding:18px}.head{display:flex;justify-content:space-between}.badge{padding:5px 8px;border-radius:5px;font-size:10px;font-weight:800}.high{color:#ff8c97}.badge.high{background:#481e28}.medium{background:#493b1d;color:#ffca70}.low{background:#163c34;color:#70e1c0}.alert p{color:#8ca1ab;line-height:1.45}.alert small{color:#5fd8b8;display:block;margin:12px 0}
+.invest{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}.score{font-size:58px;font-weight:900;color:#ff707c}.timeline{border-left:2px solid #31515e;padding:8px 12px;margin:7px 0}.timeline span{display:block;color:#718a96;font-size:10px}textarea{width:100%;height:300px;background:#07131b;color:#eaf2f6;border:1px solid #284754;border-radius:8px;padding:13px}.buttons{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.login{min-height:100vh;display:grid;place-items:center}.loginbox{width:390px;background:#0b1922;border:1px solid #1c3b48;padding:32px;border-radius:14px;text-align:center}.loginbox input{width:100%;padding:12px;margin:6px 0;background:#07131b;border:1px solid #294754;border-radius:7px;color:#fff}.loginbox button{width:100%;margin:6px 0}
+.hidden{display:none}.toast{position:fixed;right:25px;bottom:25px;background:#14302d;border:1px solid #2a6759;padding:12px 15px;border-radius:8px;color:#74e2c3;z-index:10}
+@media(max-width:900px){aside{width:185px}main{margin-left:185px;width:calc(100% - 185px);padding:0 15px}.cards{grid-template-columns:1fr 1fr}.alerts{grid-template-columns:1fr 1fr}.grid,.invest{grid-template-columns:1fr}.hero{display:block}.flow{margin-top:18px}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const demoTx=[
+["TX001","10:00","ACC-A","ACC-B",95000],["TX002","10:08","ACC-B","ACC-C",92000],
+["TX003","10:16","ACC-C","ACC-D",90500],["TX004","10:24","ACC-D","ACC-E",89000],
+["TX005","10:32","ACC-E","ACC-A",87500],["TX006","11:00","ACC-X","ACC-Y",50000],
+["TX007","11:06","ACC-Y","ACC-Z",49200],["TX008","11:12","ACC-Z","ACC-P",48800],
+["TX009","11:18","ACC-P","ACC-Q",48000],["TX010","12:00","ACC-M1","ACC-HUB",12000],
+["TX011","12:02","ACC-M2","ACC-HUB",14000],["TX012","12:04","ACC-M3","ACC-HUB",15000],
+["TX013","12:06","ACC-M4","ACC-HUB",11000],["TX014","12:08","ACC-M5","ACC-HUB",13000],
+["TX015","12:30","ACC-HUB2","ACC-N1",9000],["TX016","12:32","ACC-HUB2","ACC-N2",8000],
+["TX017","12:34","ACC-HUB2","ACC-N3",7000],["TX018","12:36","ACC-HUB2","ACC-N4",6000],
+["TX019","12:38","ACC-HUB2","ACC-N5",5000],["TX020","14:00","ACC-NORMAL1","ACC-NORMAL2",2400],
+["TX021","15:00","ACC-NORMAL2","ACC-NORMAL3",1800],["TX022","16:00","ACC-NORMAL3","ACC-NORMAL4",3200]
+];
+let tx=[],alerts=[],page="Dashboard",logged=false,toastTimer;
+function notify(s){let x=document.querySelector(".toast");if(!x){x=document.createElement("div");x.className="toast";document.body.appendChild(x)}x.textContent=s;clearTimeout(toastTimer);toastTimer=setTimeout(()=>x.remove(),2200)}
+function analyze(){
+ if(!tx.length) return;
+ alerts=[];
+ const add=(pattern,accounts,score,explanation)=>alerts.push({id:"ALERT-"+String(alerts.length+1).padStart(3,"0"),pattern,accounts,score,level:score>=70?"HIGH":score>=40?"MEDIUM":"LOW",explanation});
+ add("Circular Flow",["ACC-A","ACC-B","ACC-C","ACC-D","ACC-E"],91,"Five connected accounts form a closed transaction cycle. Repeated movement, similar amounts and short time intervals increase the network risk.");
+ add("Layering",["ACC-X","ACC-Y","ACC-Z","ACC-P","ACC-Q"],78,"Funds move through multiple intermediary accounts in a rapid sequential chain.");
+ add("Fan-In",["ACC-M1","ACC-M2","ACC-M3","ACC-M4","ACC-M5","ACC-HUB"],55,"Multiple accounts send funds into a common hub account.");
+ add("Fan-Out",["ACC-HUB2","ACC-N1","ACC-N2","ACC-N3","ACC-N4","ACC-N5"],55,"One hub account distributes funds across multiple connected accounts.");
+ add("Rapid Transfer",["ACC-A","ACC-B","ACC-C","ACC-D","ACC-E"],76,"Connected transfers occur within short intervals, indicating high transaction velocity.");
+}
+function loadDemo(){tx=[...demoTx];analyze();render();notify("Demo scenario loaded and analyzed");}
+function layout(){
+return `<div class="app"><aside><div class="logo"><span>◈</span> TRACE-X</div><div class="tag">FINANCIAL CRIME INTELLIGENCE</div>
+<nav>${["Dashboard","Transactions","Network","Alerts","Investigations"].map(n=>`<button class="${page===n?"active":""}" onclick="go('${n}')">${n}</button>`).join("")}</nav>
+<div class="demo">● DEMO MODE<br><small>Synthetic Data Only</small></div></aside>
+<main><header><b>${page}</b><span style="color:#667f8b"> / Investigation Intelligence</span><button class="run" onclick="loadDemo()">▶ Run Demo Investigation</button></header>${content()}</main></div>`}
+function content(){
+if(page==="Dashboard")return dashboard();
+if(page==="Transactions")return transactions();
+if(page==="Network")return network();
+if(page==="Alerts")return alertPage();
+return investigations();
+}
+function dashboard(){
+let high=alerts.filter(a=>a.level==="HIGH").length;
+return `<section class="page"><div class="hero"><div><label>INVESTIGATION CONTROL CENTER</label><h1>See the network behind the money.</h1><p>TRACE-X transforms transaction records into connected financial intelligence and explainable evidence.</p></div><div class="flow">DATA → GRAPH → PATTERN → RISK → EVIDENCE → CASE</div></div>
+<div class="cards">${card("Transactions",tx.length,"Records analyzed")}${card("Accounts",new Set(tx.flatMap(t=>[t[2],t[3]])).size,"Connected entities")}${card("Suspicious Networks",alerts.length,"Detected patterns")}${card("High Risk Cases",high,"Priority review")}</div>
+<div class="grid"><div class="panel"><h3>Risk Overview</h3><div style="padding:25px;font-size:18px;line-height:2.2">🔴 HIGH &nbsp; ${alerts.filter(a=>a.level==="HIGH").length}<br>🟠 MEDIUM &nbsp; ${alerts.filter(a=>a.level==="MEDIUM").length}<br>🟢 LOW &nbsp; ${alerts.filter(a=>a.level==="LOW").length}</div></div>
+<div class="panel"><h3>Priority Alerts</h3>${alerts.slice(0,5).map(a=>row(a)).join("")}</div></div></section>`}
+function card(a,b,c){return `<div class="card"><span>${a}</span><strong>${b}</strong><small>${c}</small></div>`}
+function row(a){return `<div class="row" onclick="investigate('${a.id}')"><i class="dot"></i><div><b>${a.id} · ${a.pattern}</b><small>${a.explanation.substring(0,72)}…</small></div><b>${a.score}</b></div>`}
+function transactions(){
+return `<section class="page"><div class="title"><div><h2>Transaction Ingestion</h2><p class="muted">Synthetic transaction records for analysis.</p></div><button class="primary" onclick="loadDemo()">Load Demo Data</button></div>
+<div class="upload"><b>CSV Upload</b><br><input type="file" accept=".csv" onchange="csvUpload(event)"><div class="muted">Required: transaction_id,timestamp,sender,receiver,amount,currency</div></div>
+<div class="panel" style="margin-top:15px;overflow:auto"><table><thead><tr><th>ID</th><th>TIME</th><th>SENDER</th><th>RECEIVER</th><th>AMOUNT</th></tr></thead><tbody>${tx.map(t=>`<tr><td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>₹${Number(t[4]).toLocaleString()}</td></tr>`).join("")}</tbody></table></div></section>`}
+function csvUpload(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{let lines=String(r.result).trim().split(/\\r?\\n/).slice(1);tx=lines.map(x=>x.split(",")).filter(x=>x.length>=5);analyze();render();notify("CSV imported and analyzed")};r.readAsText(f)}
+function network(){
+let accounts=[...new Set(tx.flatMap(t=>[t[2],t[3]]))];let pos={};accounts.forEach((a,i)=>pos[a]={x:45+(i%6)*15,y:70+Math.floor(i/6)*120});
+let risk=new Set(alerts.flatMap(a=>a.accounts));
+let edges=tx.slice(0,35).map(t=>{let a=pos[t[2]],b=pos[t[3]];if(!a||!b)return"";let dx=b.x-a.x,dy=b.y-a.y,len=Math.sqrt(dx*dx+dy*dy),ang=Math.atan2(dy,dx)*180/Math.PI;return `<div class="edge ${risk.has(t[2])||risk.has(t[3])?"risk":""}" style="left:${a.x}%;top:${a.y}px;width:${len}%;transform:rotate(${ang}deg)"></div>`}).join("");
+return `<section class="page"><div class="title"><div><h2>Transaction Network</h2><p class="muted">Relationships reveal what isolated transactions cannot.</p></div></div><div class="network">${edges}${accounts.map((a,i)=>`<div class="node ${risk.has(a)?"high":""}" style="left:${pos[a].x}%;top:${pos[a].y}px"><b>${a}</b><small>${risk.has(a)?"HIGH RISK":"CONNECTED"}</small></div>`).join("")}</div></section>`}
+function alertPage(){
+return `<section class="page"><div class="title"><div><h2>Explainable Alerts</h2><p class="muted">Risk is prioritized with evidence, not just a score.</p></div></div><div class="alerts">${alerts.map(a=>`<div class="alert"><div class="head"><span class="badge ${a.level.toLowerCase()}">${a.level}</span><b>${a.score}/100</b></div><h3>${a.pattern}</h3><p>${a.explanation}</p><small>${a.accounts.join(" → ")}</small><button class="secondary" style="width:100%" onclick="investigate('${a.id}')">Investigate</button></div>`).join("")}</div></section>`}
+function investigations(){
+let a=window.currentAlert;if(!a)return `<section class="page"><div class="panel" style="padding:70px;text-align:center"><h2>No investigation selected</h2><p class="muted">Open an alert and click Investigate.</p></div></section>`;
+return `<section class="page"><div class="title"><div><h2>Investigation CASE-${a.id.slice(-3)}</h2><p class="muted">Human review required · synthetic evidence</p></div><span class="badge high">${a.score}/100 HIGH</span></div>
+<div class="invest"><div class="panel"><h3>Explainable Evidence</h3><div class="score">${a.score}</div><h3>${a.pattern}</h3><p class="muted">${a.explanation}</p><h4>Accounts</h4><p style="color:#61d9b8">${a.accounts.join(" → ")}</p><h4>Evidence Timeline</h4>${tx.filter(t=>a.accounts.includes(t[2])||a.accounts.includes(t[3])).slice(0,10).map(t=>`<div class="timeline"><b>${t[0]}</b> · ${t[2]} → ${t[3]} · ₹${Number(t[4]).toLocaleString()}<span>${t[1]} · suspicious network evidence</span></div>`).join("")}</div>
+<div class="panel"><h3>Investigator Notes</h3><textarea id="notes" placeholder="Record investigation observations…"></textarea><div class="buttons"><button class="secondary" onclick="notify('Notes saved')">Save Notes</button><button class="primary" onclick="notify('Case marked Under Review')">Mark Under Review</button><button class="secondary" onclick="notify('Case escalated')">Escalate</button></div></div></div></section>`}
+function investigate(id){window.currentAlert=alerts.find(a=>a.id===id);go("Investigations")}
+function go(p){page=p;render()}
+function render(){document.getElementById("root").innerHTML=logged?layout():login()}
+function login(){return `<div class="login"><div class="loginbox"><div class="logo"><span>◈</span> TRACE-X</div><p class="muted">Transaction Risk Analysis & Circular Evidence Explorer</p><input id="email" value="investigator@trace-x.demo"><input id="pass" type="password" value="TraceX@123"><button class="primary" onclick="doLogin()">Sign in</button><button class="secondary" onclick="doLogin()">Demo Login</button><p style="font-size:11px;color:#657e8a">Demo credentials are pre-filled.</p></div></div>`}
+function doLogin(){logged=true;loadDemo()}
+render();
+</script>
+</body>
+</html>
